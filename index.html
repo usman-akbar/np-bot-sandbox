@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script>
+    function sendDataToNayaPayApp(data) {
+      console.log(JSON.stringify(data));
+      NayaPay.webCallback(JSON.stringify(data));
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <label for="merchant_user_name">Consumer Name:</label>
+    <input type="text" name="merchant_user_name" id="merchant_user_name" />
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" id="amount" />
+    <br>
+    <label for="invoiceNo">Invoice Number:</label>
+    <input type="text" name="invoiceNo" id="invoiceNo" />
+    <br>
+    <label for="referenceNo">Reference Number:</label>
+    <input type="text" name="referenceNo" id="referenceNo" />
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const data = new FormData(event.target);
+      const value = Object.fromEntries(data.entries());
+      sendDataToNayaPayApp(value)
+      console.log({ value });
+    }
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', handleSubmit);
+  </script>
+</body>
+
+</html>
