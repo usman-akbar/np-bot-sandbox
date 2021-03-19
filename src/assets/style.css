@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: #fdf9f3bf;
+}
+
+@keyframes fromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes fromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.form {
+    animation: 0.5s ease-out fromBottom;
+}
+
+.demo {
+    animation: 0.5s ease-out fromLeft;
+}
